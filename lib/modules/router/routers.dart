@@ -1,5 +1,4 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:go_router/go_router.dart';
 import 'package:quiz/modules/store/user/user_provider.dart';
 import 'package:quiz/pages/discover/discover_page.dart';
@@ -9,7 +8,7 @@ import 'package:quiz/pages/main/main_page.dart';
 import 'package:flutter/material.dart';
 import 'package:quiz/pages/profile/profile_page.dart';
 import 'package:quiz/pages/quiz/quiz_page.dart';
-part 'routers.g.dart';
+part 'routers.config.dart';
 
 class Routes {
   // Main
