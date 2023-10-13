@@ -3,6 +3,7 @@
 /// @author ease 2020/4/20  11:08 AM
 ///
 /// screen adapter utils
+// ignore_for_file: non_constant_identifier_names, unused_field, constant_identifier_names
 import 'package:flutter/material.dart';
 
 ///screen adapter
@@ -75,12 +76,10 @@ class SA {
   double get scaleText => scaleWidth;
 
   ///------------根据传入的值,返回一个经过计算的值-------------
-  // ignore: non_constant_identifier_names
   double Width(num width) {
     return width * scaleWidth;
   }
 
-  // ignore: non_constant_identifier_names
   num Height(num height) {
     return height * scaleHeight;
   }

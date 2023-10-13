@@ -8,5 +8,11 @@ enum IdentityType {
   @JsonValue(2)
   Google,
   @JsonValue(3)
-  Apple
+  Apple,
+}
+
+extension IdentityTypeIndex on IdentityType {
+  int type() {
+    return index + 1;
+  }
 }

@@ -13,7 +13,7 @@ class Http {
   static ParamInterceptor paramInterceptor = ParamInterceptor();
 
   /// default options
-  static const Duration CONNECT_TIMEOUT = Duration(microseconds: 15);
+  static const Duration CONNECT_TIMEOUT = Duration(seconds: 15);
   static const Duration RECEIVE_TIMEOUT = Duration(seconds: 5);
 
   /// http request methods
@@ -27,7 +27,7 @@ class Http {
         connectTimeout: CONNECT_TIMEOUT,
         receiveTimeout: RECEIVE_TIMEOUT,
         headers: {"user-agent": "dio"},
-        baseUrl: ApiConst.host,
+        baseUrl: ApiConst.BaseURL,
         responseType: ResponseType.plain);
     dio = Dio(options);
     // instance
@@ -159,7 +159,7 @@ class Http {
       BaseResponse response = BaseResponse.fromJson(value);
       return response;
     }
-    return BaseResponse(-1, message: "网络错误");
+    return BaseResponse(-1, msg: "网络错误");
   }
 
   /// release dio instance

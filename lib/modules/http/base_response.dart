@@ -1,18 +1,18 @@
 import 'dart:convert';
 
 class BaseResponse {
-  String? message = '';
+  String? msg = '';
   int code = -1;
-  Object? data;
+  Map<String, dynamic> data = {};
   String? lastId = '';
-  bool? more = false; // 如果为true说明还有数据
+  bool more = false;
 
-  BaseResponse(this.code, {this.message});
+  BaseResponse(this.code, {this.msg});
 
   BaseResponse.fromJson(String value) {
     try {
       Map<String, dynamic> jsonObject = json.decode(value);
-      message = jsonObject['message'];
+      msg = jsonObject['msg'];
       code = jsonObject['code'];
       data = jsonObject['data'];
       more = jsonObject['more'];
@@ -31,13 +31,10 @@ class BaseResponse {
   }
 
   /// 必须是在请求成功的前提下使用
-  bool isEmpty() {
+  bool isEmptyList() {
     // 1.请求是成功的
     // 2.data == null
     // 3.data isEmpty
-    if (data != null) {
-      return false;
-    }
     if (data is List && (data as List).isNotEmpty) {
       return false;
     }
@@ -45,7 +42,7 @@ class BaseResponse {
   }
 
   String getMessage() {
-    return message ?? "";
+    return msg ?? "";
   }
 
   int getCode() {
@@ -54,11 +51,11 @@ class BaseResponse {
 
   @override
   String toString() {
-    return 'BaseResponse{message: $message, code: $code, data: $data}';
+    return 'BaseResponse{message: $msg, code: $code, data: $data}';
   }
 
   Map<String, dynamic> toJson() => {
-        'message': message,
+        'msg': msg,
         'code': code,
         'more': more,
         'last_id': lastId,
@@ -66,6 +63,6 @@ class BaseResponse {
       };
 
   bool hasMore() {
-    return more ?? false;
+    return more;
   }
 }

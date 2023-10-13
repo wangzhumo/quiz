@@ -17,8 +17,8 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$LoginState {
   IdentityType get identityType => throw _privateConstructorUsedError;
-  String? get identity => throw _privateConstructorUsedError;
-  String? get credential => throw _privateConstructorUsedError;
+  String get identity => throw _privateConstructorUsedError;
+  String get credential => throw _privateConstructorUsedError;
   bool get enable => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -34,8 +34,8 @@ abstract class $LoginStateCopyWith<$Res> {
   @useResult
   $Res call(
       {IdentityType identityType,
-      String? identity,
-      String? credential,
+      String identity,
+      String credential,
       bool enable});
 }
 
@@ -53,8 +53,8 @@ class _$LoginStateCopyWithImpl<$Res, $Val extends LoginState>
   @override
   $Res call({
     Object? identityType = null,
-    Object? identity = freezed,
-    Object? credential = freezed,
+    Object? identity = null,
+    Object? credential = null,
     Object? enable = null,
   }) {
     return _then(_value.copyWith(
@@ -62,14 +62,14 @@ class _$LoginStateCopyWithImpl<$Res, $Val extends LoginState>
           ? _value.identityType
           : identityType // ignore: cast_nullable_to_non_nullable
               as IdentityType,
-      identity: freezed == identity
+      identity: null == identity
           ? _value.identity
           : identity // ignore: cast_nullable_to_non_nullable
-              as String?,
-      credential: freezed == credential
+              as String,
+      credential: null == credential
           ? _value.credential
           : credential // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       enable: null == enable
           ? _value.enable
           : enable // ignore: cast_nullable_to_non_nullable
@@ -88,8 +88,8 @@ abstract class _$$LoginStateImplCopyWith<$Res>
   @useResult
   $Res call(
       {IdentityType identityType,
-      String? identity,
-      String? credential,
+      String identity,
+      String credential,
       bool enable});
 }
 
@@ -105,8 +105,8 @@ class __$$LoginStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? identityType = null,
-    Object? identity = freezed,
-    Object? credential = freezed,
+    Object? identity = null,
+    Object? credential = null,
     Object? enable = null,
   }) {
     return _then(_$LoginStateImpl(
@@ -114,14 +114,14 @@ class __$$LoginStateImplCopyWithImpl<$Res>
           ? _value.identityType
           : identityType // ignore: cast_nullable_to_non_nullable
               as IdentityType,
-      identity: freezed == identity
+      identity: null == identity
           ? _value.identity
           : identity // ignore: cast_nullable_to_non_nullable
-              as String?,
-      credential: freezed == credential
+              as String,
+      credential: null == credential
           ? _value.credential
           : credential // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       enable: null == enable
           ? _value.enable
           : enable // ignore: cast_nullable_to_non_nullable
@@ -143,9 +143,9 @@ class _$LoginStateImpl implements _LoginState {
   @JsonKey()
   final IdentityType identityType;
   @override
-  final String? identity;
+  final String identity;
   @override
-  final String? credential;
+  final String credential;
   @override
   @JsonKey()
   final bool enable;
@@ -183,16 +183,16 @@ class _$LoginStateImpl implements _LoginState {
 abstract class _LoginState implements LoginState {
   factory _LoginState(
       {final IdentityType identityType,
-      required final String? identity,
-      required final String? credential,
+      required final String identity,
+      required final String credential,
       final bool enable}) = _$LoginStateImpl;
 
   @override
   IdentityType get identityType;
   @override
-  String? get identity;
+  String get identity;
   @override
-  String? get credential;
+  String get credential;
   @override
   bool get enable;
   @override

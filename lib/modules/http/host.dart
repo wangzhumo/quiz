@@ -1,10 +1,12 @@
 class ApiConst {
-  static String host = '127.0.0.1:4000';
+  static String host = '192.168.31.33:4000';
 
-  static String _generateUrl(String path, {String scheme = 'https'}) {
-    return '$scheme://$path';
+  static String _generateUrl(String path, {String scheme = 'http'}) {
+    return '$scheme://$host/$path';
   }
 
+  static String get BaseURL => _generateUrl("");
+
   // UCenter path
-  static String get UCenter => _generateUrl("/ucenter");
+  static String get UCenter => _generateUrl("ucenter");
 }
