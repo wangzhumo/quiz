@@ -32,7 +32,8 @@ class Http {
     dio = Dio(options);
     // instance
     dio.interceptors.add(paramInterceptor);
-    dio.interceptors.add(LoggerInterceptor());
+    dio.interceptors
+        .add(LoggerInterceptor(requestBody: true, requestHeader: true));
     dio.interceptors
         .add(RetryInterceptor(dio: dio, retries: 3, retryDelays: const [
       Duration(seconds: 1),
