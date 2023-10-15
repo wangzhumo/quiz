@@ -127,6 +127,7 @@ class LoginPage extends HookConsumerWidget {
                       ),
                     ),
                     AbsorbPointer(
+                      absorbing: false,
                       child: Container(),
                     )
                   ],
