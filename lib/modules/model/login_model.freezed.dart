@@ -26,7 +26,9 @@ mixin _$UserModel {
   int get status => throw _privateConstructorUsedError;
   String get region => throw _privateConstructorUsedError;
   IdentityType get identityType => throw _privateConstructorUsedError;
+  int get lastAt => throw _privateConstructorUsedError;
   String get identity => throw _privateConstructorUsedError;
+  String get access_token => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -46,7 +48,9 @@ abstract class $UserModelCopyWith<$Res> {
       int status,
       String region,
       IdentityType identityType,
-      String identity});
+      int lastAt,
+      String identity,
+      String access_token});
 }
 
 /// @nodoc
@@ -68,7 +72,9 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
     Object? status = null,
     Object? region = null,
     Object? identityType = null,
+    Object? lastAt = null,
     Object? identity = null,
+    Object? access_token = null,
   }) {
     return _then(_value.copyWith(
       uid: null == uid
@@ -95,9 +101,17 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
           ? _value.identityType
           : identityType // ignore: cast_nullable_to_non_nullable
               as IdentityType,
+      lastAt: null == lastAt
+          ? _value.lastAt
+          : lastAt // ignore: cast_nullable_to_non_nullable
+              as int,
       identity: null == identity
           ? _value.identity
           : identity // ignore: cast_nullable_to_non_nullable
+              as String,
+      access_token: null == access_token
+          ? _value.access_token
+          : access_token // ignore: cast_nullable_to_non_nullable
               as String,
     ) as $Val);
   }
@@ -118,7 +132,9 @@ abstract class _$$UserModelImplCopyWith<$Res>
       int status,
       String region,
       IdentityType identityType,
-      String identity});
+      int lastAt,
+      String identity,
+      String access_token});
 }
 
 /// @nodoc
@@ -138,7 +154,9 @@ class __$$UserModelImplCopyWithImpl<$Res>
     Object? status = null,
     Object? region = null,
     Object? identityType = null,
+    Object? lastAt = null,
     Object? identity = null,
+    Object? access_token = null,
   }) {
     return _then(_$UserModelImpl(
       uid: null == uid
@@ -165,9 +183,17 @@ class __$$UserModelImplCopyWithImpl<$Res>
           ? _value.identityType
           : identityType // ignore: cast_nullable_to_non_nullable
               as IdentityType,
+      lastAt: null == lastAt
+          ? _value.lastAt
+          : lastAt // ignore: cast_nullable_to_non_nullable
+              as int,
       identity: null == identity
           ? _value.identity
           : identity // ignore: cast_nullable_to_non_nullable
+              as String,
+      access_token: null == access_token
+          ? _value.access_token
+          : access_token // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -183,7 +209,9 @@ class _$UserModelImpl implements _UserModel {
       this.status = 0,
       this.region = "Global",
       this.identityType = IdentityType.UNKnow,
-      required this.identity});
+      this.lastAt = 0,
+      this.identity = '',
+      this.access_token = ''});
 
   factory _$UserModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$UserModelImplFromJson(json);
@@ -206,11 +234,18 @@ class _$UserModelImpl implements _UserModel {
   @JsonKey()
   final IdentityType identityType;
   @override
+  @JsonKey()
+  final int lastAt;
+  @override
+  @JsonKey()
   final String identity;
+  @override
+  @JsonKey()
+  final String access_token;
 
   @override
   String toString() {
-    return 'UserModel(uid: $uid, avatar: $avatar, nick: $nick, status: $status, region: $region, identityType: $identityType, identity: $identity)';
+    return 'UserModel(uid: $uid, avatar: $avatar, nick: $nick, status: $status, region: $region, identityType: $identityType, lastAt: $lastAt, identity: $identity, access_token: $access_token)';
   }
 
   @override
@@ -225,14 +260,17 @@ class _$UserModelImpl implements _UserModel {
             (identical(other.region, region) || other.region == region) &&
             (identical(other.identityType, identityType) ||
                 other.identityType == identityType) &&
+            (identical(other.lastAt, lastAt) || other.lastAt == lastAt) &&
             (identical(other.identity, identity) ||
-                other.identity == identity));
+                other.identity == identity) &&
+            (identical(other.access_token, access_token) ||
+                other.access_token == access_token));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, uid, avatar, nick, status, region, identityType, identity);
+  int get hashCode => Object.hash(runtimeType, uid, avatar, nick, status,
+      region, identityType, lastAt, identity, access_token);
 
   @JsonKey(ignore: true)
   @override
@@ -256,7 +294,9 @@ abstract class _UserModel implements UserModel {
       final int status,
       final String region,
       final IdentityType identityType,
-      required final String identity}) = _$UserModelImpl;
+      final int lastAt,
+      final String identity,
+      final String access_token}) = _$UserModelImpl;
 
   factory _UserModel.fromJson(Map<String, dynamic> json) =
       _$UserModelImpl.fromJson;
@@ -274,7 +314,11 @@ abstract class _UserModel implements UserModel {
   @override
   IdentityType get identityType;
   @override
+  int get lastAt;
+  @override
   String get identity;
+  @override
+  String get access_token;
   @override
   @JsonKey(ignore: true)
   _$$UserModelImplCopyWith<_$UserModelImpl> get copyWith =>

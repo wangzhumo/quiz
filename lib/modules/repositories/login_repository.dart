@@ -18,7 +18,7 @@ class LoginRespository implements ILoginRespository {
       IdentityType identityType, String identity, String credential) {
     String signInUrl = "${ApiConst.UCenter}/signin";
     return Http().json(signInUrl, data: {
-      "identityType": IdentityType.Email.type(),
+      "identityType": IdentityType.Email.index,
       "identity": identity,
       "credential": credential
     }).then((value) {
@@ -35,7 +35,7 @@ class LoginRespository implements ILoginRespository {
       String identity, String credential, String nick) {
     String signUpUrl = "${ApiConst.UCenter}/signup";
     return Http().json(signUpUrl, data: {
-      "identityType": IdentityType.Email.type(),
+      "identityType": IdentityType.Email.index,
       "identity": identity,
       "credential": credential,
       "nick": nick

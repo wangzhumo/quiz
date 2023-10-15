@@ -17,7 +17,9 @@ _$UserModelImpl _$$UserModelImplFromJson(Map<String, dynamic> json) =>
       identityType:
           $enumDecodeNullable(_$IdentityTypeEnumMap, json['identityType']) ??
               IdentityType.UNKnow,
-      identity: json['identity'] as String,
+      lastAt: json['lastAt'] as int? ?? 0,
+      identity: json['identity'] as String? ?? '',
+      access_token: json['access_token'] as String? ?? '',
     );
 
 Map<String, dynamic> _$$UserModelImplToJson(_$UserModelImpl instance) =>
@@ -28,7 +30,9 @@ Map<String, dynamic> _$$UserModelImplToJson(_$UserModelImpl instance) =>
       'status': instance.status,
       'region': instance.region,
       'identityType': _$IdentityTypeEnumMap[instance.identityType]!,
+      'lastAt': instance.lastAt,
       'identity': instance.identity,
+      'access_token': instance.access_token,
     };
 
 const _$IdentityTypeEnumMap = {

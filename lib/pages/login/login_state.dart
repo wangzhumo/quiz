@@ -3,9 +3,11 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:go_router/go_router.dart';
 import 'package:quiz/modules/identityType.dart';
+import 'package:quiz/modules/model/login_model.dart';
 import 'package:quiz/modules/providers/provider.dart';
 import 'package:quiz/modules/repositories/login_repository.dart';
 import 'package:quiz/modules/router/routers.dart';
+import 'package:quiz/modules/store/user/user_provider.dart';
 
 part 'login_state.freezed.dart';
 
@@ -19,17 +21,31 @@ class LoginState with _$LoginState {
 }
 
 class LoginNotifier extends StateNotifier<LoginState> {
-  LoginNotifier({required this.loginRepository})
+  LoginNotifier({required this.loginRepository, required this.userManager})
       : super(LoginState(identity: '', credential: ''));
 
   final ILoginRespository loginRepository;
+  final UserManager userManager;
   void onTabSignIn(BuildContext context) {
     loginRepository
         .signIn(state.identityType, state.identity, state.credential)
-        .then((value) => {
-              if (value.isSuccessful())
-                {GoRouter.of(context).go(Routes.mainTabQuizzes)}
-            });
+        .then((value) {
+      UserModel? userModel = value.data;
+      if (value.isSuccessful() && userModel != null) {
+        UserModel um = userModel;
+        userManager.login(User(
+            uid: um.uid,
+            avatar: um.avatar,
+            nick: um.nick,
+            status: um.status,
+            token: um.access_token,
+            region: um.region,
+            identity: um.identity,
+            identityType: um.identityType.index,
+            lastAt: um.lastAt));
+        GoRouter.of(context).go(Routes.mainTabQuizzes);
+      }
+    });
   }
 
   void onTapSignUp(BuildContext context) {
@@ -72,5 +88,7 @@ class LoginNotifier extends StateNotifier<LoginState> {
 final loginProvider =
     StateNotifierProvider.autoDispose<LoginNotifier, LoginState>((ref) {
   final loginProvider = ref.watch(loginRespositoryProvider);
-  return LoginNotifier(loginRepository: loginProvider);
+  final userManager = ref.read(userProvider.notifier);
+  return LoginNotifier(
+      loginRepository: loginProvider, userManager: userManager);
 });
