@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:go_router/go_router.dart';
 import 'package:quiz/generated/l10n.dart';
@@ -12,27 +13,31 @@ class MainPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    FlutterNativeSplash.remove();
     SA.init(context, width: 375, height: 844, allowSystemFontScale: true);
-    return Scaffold(
-      backgroundColor: Colors.white,
-      body: child,
-      bottomNavigationBar: BottomNavigationBar(
-        items: [
-          BottomNavigationBarItem(
-              icon: const Icon(Icons.quiz_outlined),
-              label: L.of(context).tab_quizzes),
-          BottomNavigationBarItem(
-              icon: const Icon(Icons.find_replace),
-              label: L.of(context).tab_discover),
-          BottomNavigationBarItem(
-              icon: const Icon(Icons.person_outlined),
-              label: L.of(context).tab_profile)
-        ],
-        currentIndex: _calculateSelectedIndex(context),
-        onTap: (index) => _onItemTaped(index, context),
-      ),
-    );
+    return AnnotatedRegion(
+        value: SystemUiOverlayStyle.dark,
+        child: Scaffold(
+          backgroundColor: Colors.white,
+          body: child,
+          bottomNavigationBar: BottomNavigationBar(
+            backgroundColor: Colors.grey[200],
+            selectedItemColor: Colors.blueAccent,
+            unselectedItemColor: Colors.grey[600],
+            items: [
+              BottomNavigationBarItem(
+                  icon: const Icon(Icons.quiz_outlined),
+                  label: L.of(context).tab_quizzes),
+              BottomNavigationBarItem(
+                  icon: const Icon(Icons.find_replace),
+                  label: L.of(context).tab_discover),
+              BottomNavigationBarItem(
+                  icon: const Icon(Icons.person_outlined),
+                  label: L.of(context).tab_profile)
+            ],
+            currentIndex: _calculateSelectedIndex(context),
+            onTap: (index) => _onItemTaped(index, context),
+          ),
+        ));
   }
 
   void _onItemTaped(int index, BuildContext context) {

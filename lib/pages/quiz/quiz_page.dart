@@ -8,6 +8,7 @@ class QuizzesTab extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
+      backgroundColor: Colors.grey[200],
       body: Center(
         child: HookConsumer(
           builder: (context, ref, _) {
@@ -17,5 +18,4 @@ class QuizzesTab extends HookConsumerWidget {
       ),
     );
   }
-
 }

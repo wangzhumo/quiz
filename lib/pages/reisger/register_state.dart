@@ -3,9 +3,11 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:go_router/go_router.dart';
 import 'package:quiz/modules/identityType.dart';
+import 'package:quiz/modules/model/login_model.dart';
 import 'package:quiz/modules/providers/provider.dart';
 import 'package:quiz/modules/repositories/login_repository.dart';
 import 'package:quiz/modules/router/routers.dart';
+import 'package:quiz/modules/store/user/user_provider.dart';
 
 part 'register_state.freezed.dart';
 
@@ -19,18 +21,32 @@ class RegisterState with _$RegisterState {
 }
 
 class RegisterNotifier extends StateNotifier<RegisterState> {
-  RegisterNotifier({required this.loginRepository})
+  RegisterNotifier({required this.loginRepository, required this.userManager})
       : super(RegisterState(identity: '', credential: '', nick: ''));
 
   final ILoginRespository loginRepository;
+  final UserManager userManager;
   void onTabSignIn(BuildContext context) {
     loginRepository
         .signUp(
             IdentityType.Email, state.identity, state.credential, state.nick)
-        .then((value) => {
-              if (value.isSuccessful())
-                {GoRouter.of(context).go(Routes.mainTabQuizzes)}
-            });
+        .then((value) {
+      UserModel? userModel = value.data;
+      if (value.isSuccessful() && userModel != null) {
+        UserModel um = userModel;
+        userManager.login(User(
+            uid: um.uid,
+            avatar: um.avatar,
+            nick: um.nick,
+            status: um.status,
+            token: um.access_token,
+            region: um.region,
+            identity: um.identity,
+            identityType: um.identityType.index,
+            lastAt: um.lastAt));
+        GoRouter.of(context).go(Routes.mainTabQuizzes);
+      }
+    });
   }
 
   void onTapBack(BuildContext context) {
@@ -84,5 +100,7 @@ class RegisterNotifier extends StateNotifier<RegisterState> {
 final registerProvider =
     StateNotifierProvider.autoDispose<RegisterNotifier, RegisterState>((ref) {
   final loginProvider = ref.watch(loginRespositoryProvider);
-  return RegisterNotifier(loginRepository: loginProvider);
+  final userManager = ref.read(userProvider.notifier);
+  return RegisterNotifier(
+      loginRepository: loginProvider, userManager: userManager);
 });
