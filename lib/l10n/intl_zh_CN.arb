@@ -3,7 +3,9 @@
     "globalSumbit" : "Sumbit",
     "globalSignIn" : "Sign In",
     "globalSingUp" : "Sing Up",
-    "globalConfirm" : "Connfirm",
+    "globalConfirm" : "Confirm",
+    "globalHint": "Hint",
+    "globalCancel": "Cancel",
     "tab_discover": "Discover",
     "tab_profile": "Profile",
     "tab_quizzes": "Quizzes",
@@ -22,6 +24,8 @@
     "login_rest_psd" : "Rest Password",
     "register_email" : "Register With Email",
     "register_nick" : "NickName",
-    "register_nick_input" : "Type your Nick Name"
+    "register_nick_input" : "Type your Nick Name",
+    "profile_logout" : "Log Out",
+    "profile_logout_content" : "Confirm to logout your account ?"
     
 }

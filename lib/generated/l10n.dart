@@ -90,11 +90,31 @@ class L {
     );
   }
 
-  /// `Connfirm`
+  /// `Confirm`
   String get globalConfirm {
     return Intl.message(
-      'Connfirm',
+      'Confirm',
       name: 'globalConfirm',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Hint`
+  String get globalHint {
+    return Intl.message(
+      'Hint',
+      name: 'globalHint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Cancel`
+  String get globalCancel {
+    return Intl.message(
+      'Cancel',
+      name: 'globalCancel',
       desc: '',
       args: [],
     );
@@ -275,6 +295,26 @@ class L {
     return Intl.message(
       'Type your Nick Name',
       name: 'register_nick_input',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Log Out`
+  String get profile_logout {
+    return Intl.message(
+      'Log Out',
+      name: 'profile_logout',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Confirm to logout your account ?`
+  String get profile_logout_content {
+    return Intl.message(
+      'Confirm to logout your account ?',
+      name: 'profile_logout_content',
       desc: '',
       args: [],
     );

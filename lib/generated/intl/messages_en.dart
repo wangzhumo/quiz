@@ -23,7 +23,9 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "appName": MessageLookupByLibrary.simpleMessage("Quizzes"),
-        "globalConfirm": MessageLookupByLibrary.simpleMessage("Connfirm"),
+        "globalCancel": MessageLookupByLibrary.simpleMessage("Cancel"),
+        "globalConfirm": MessageLookupByLibrary.simpleMessage("Confirm"),
+        "globalHint": MessageLookupByLibrary.simpleMessage("Hint"),
         "globalSignIn": MessageLookupByLibrary.simpleMessage("Sign In"),
         "globalSingUp": MessageLookupByLibrary.simpleMessage("Sing Up"),
         "globalSumbit": MessageLookupByLibrary.simpleMessage("Sumbit"),
@@ -46,6 +48,9 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Verification Code"),
         "login_welcome":
             MessageLookupByLibrary.simpleMessage("Welcome to Quizzes"),
+        "profile_logout": MessageLookupByLibrary.simpleMessage("Log Out"),
+        "profile_logout_content": MessageLookupByLibrary.simpleMessage(
+            "Confirm to logout your account ?"),
         "register_email":
             MessageLookupByLibrary.simpleMessage("Register With Email"),
         "register_nick": MessageLookupByLibrary.simpleMessage("NickName"),
