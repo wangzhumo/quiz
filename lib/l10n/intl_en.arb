@@ -19,6 +19,8 @@
   "login_code_input" : "Enter the code here",
   "login_new_psd" : "New Password",
   "login_psd_again" : "Enter password again",
-  "login_rest_psd" : "Rest Password"
-  
+  "login_rest_psd" : "Rest Password",
+  "register_email" : "Register With Email",
+  "register_nick" : "NickName",
+  "register_nick_input" : "Type your Nick Name"
 }

@@ -249,6 +249,36 @@ class L {
       args: [],
     );
   }
+
+  /// `Register With Email`
+  String get register_email {
+    return Intl.message(
+      'Register With Email',
+      name: 'register_email',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `NickName`
+  String get register_nick {
+    return Intl.message(
+      'NickName',
+      name: 'register_nick',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Type your Nick Name`
+  String get register_nick_input {
+    return Intl.message(
+      'Type your Nick Name',
+      name: 'register_nick_input',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<L> {

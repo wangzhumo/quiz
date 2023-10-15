@@ -8,6 +8,7 @@ import 'package:quiz/pages/main/main_page.dart';
 import 'package:flutter/material.dart';
 import 'package:quiz/pages/profile/profile_page.dart';
 import 'package:quiz/pages/quiz/quiz_page.dart';
+import 'package:quiz/pages/reisger/register_page.dart';
 part 'routers.config.dart';
 
 class Routes {
@@ -19,8 +20,10 @@ class Routes {
   static String mainTabDiscover = "/discover";
   // Tab - Profile
   static String mainTabProfile = "/profile";
-
-  /// 登录模块
+  // register
+  static String register = "/login/register";
+  static String registerSubPath = "register";
+  // login
   static String login = "/login";
 
   // 验证码输入
@@ -28,9 +31,6 @@ class Routes {
 
   // 个人资料
   static String loginProfileEditor = "/login/ProfileEditor";
-
-  // 注册
-  static String loginRegister = "/register";
 
   /// 首页模块的页面
   static String home = "/home";

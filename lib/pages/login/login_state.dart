@@ -4,7 +4,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:go_router/go_router.dart';
 import 'package:quiz/modules/identityType.dart';
 import 'package:quiz/modules/providers/provider.dart';
-import 'package:quiz/modules/repository/login_repository.dart';
+import 'package:quiz/modules/repositories/login_repository.dart';
 import 'package:quiz/modules/router/routers.dart';
 
 part 'login_state.freezed.dart';
@@ -30,6 +30,10 @@ class LoginNotifier extends StateNotifier<LoginState> {
               if (value.isSuccessful())
                 {GoRouter.of(context).go(Routes.mainTabQuizzes)}
             });
+  }
+
+  void onTapSignUp(BuildContext context) {
+    GoRouter.of(context).push(Routes.register);
   }
 
   updateCredential(String credential) {

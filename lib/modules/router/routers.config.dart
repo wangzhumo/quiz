@@ -36,7 +36,14 @@ final routers = GoRouter(
             },
           ),
         ]),
-    GoRoute(path: Routes.login, builder: (context, state) => const LoginPage())
+    GoRoute(
+        path: Routes.login,
+        builder: (context, state) => const LoginPage(),
+        routes: [
+          GoRoute(
+              path: Routes.registerSubPath,
+              builder: (context, state) => const RegisterPage())
+        ]),
   ],
   initialLocation: Routes.mainTabQuizzes,
   debugLogDiagnostics: true,

@@ -46,6 +46,11 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Verification Code"),
         "login_welcome":
             MessageLookupByLibrary.simpleMessage("Welcome to Quizzes"),
+        "register_email":
+            MessageLookupByLibrary.simpleMessage("Register With Email"),
+        "register_nick": MessageLookupByLibrary.simpleMessage("NickName"),
+        "register_nick_input":
+            MessageLookupByLibrary.simpleMessage("Type your Nick Name"),
         "tab_discover": MessageLookupByLibrary.simpleMessage("Discover"),
         "tab_profile": MessageLookupByLibrary.simpleMessage("Profile"),
         "tab_quizzes": MessageLookupByLibrary.simpleMessage("Quizzes")
