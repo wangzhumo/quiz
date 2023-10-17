@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:quiz/pages/profile/profile_page.dart';
 import 'package:quiz/pages/quiz/quiz_page.dart';
 import 'package:quiz/pages/reisger/register_page.dart';
+import 'package:quiz/pages/verify/verify_page.dart';
 part 'routers.config.dart';
 
 class Routes {
@@ -25,9 +26,8 @@ class Routes {
   static String registerSubPath = "register";
   // login
   static String login = "/login";
-
-  // 验证码输入
-  static String loginPinCode = "/login/PinCode";
+  // verify code
+  static String verfiyCode = "/verify";
 
   // 个人资料
   static String loginProfileEditor = "/login/ProfileEditor";

@@ -44,6 +44,13 @@ final routers = GoRouter(
               path: Routes.registerSubPath,
               builder: (context, state) => const RegisterPage())
         ]),
+    GoRoute(
+      path: Routes.verfiyCode,
+      builder: (context, GoRouterState state) {
+        String type = state.pathParameters['type'] ?? 'email';
+        return VerifyPage(type);
+      },
+    )
   ],
   initialLocation: Routes.mainTabQuizzes,
   debugLogDiagnostics: true,

@@ -19,6 +19,11 @@ class ProfileNotifier extends StateNotifier<ProfileState> {
     GoRouter.of(context).go(Routes.mainTabQuizzes);
     Http.release();
   }
+
+  void onTapVerifyEmail(BuildContext context) {
+    // go verify page
+    GoRouter.of(context).go(Routes.verfiyCode);
+  }
 }
 
 final profileProvider = StateNotifierProvider((ref) {

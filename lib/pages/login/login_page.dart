@@ -58,6 +58,7 @@ class LoginPage extends HookConsumerWidget {
                       maxLines: 1,
                       onChanged: (value) => notifier.updateIdentity(value),
                       decoration: InputDecoration(
+                          hintStyle: TextStyle(fontSize: 12.sp),
                           border: const UnderlineInputBorder(
                               borderSide: BorderSide(color: Colors.black)),
                           focusedBorder: const UnderlineInputBorder(
@@ -81,6 +82,7 @@ class LoginPage extends HookConsumerWidget {
                       obscureText: true,
                       onChanged: (value) => notifier.updateCredential(value),
                       decoration: InputDecoration(
+                          hintStyle: TextStyle(fontSize: 12.sp),
                           border: const UnderlineInputBorder(
                               borderSide: BorderSide(color: Colors.black)),
                           focusedBorder: const UnderlineInputBorder(
@@ -125,10 +127,6 @@ class LoginPage extends HookConsumerWidget {
                           ),
                         ),
                       ),
-                    ),
-                    AbsorbPointer(
-                      absorbing: false,
-                      child: Container(),
                     )
                   ],
                 )),

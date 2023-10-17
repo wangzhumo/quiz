@@ -26,6 +26,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "globalCancel": MessageLookupByLibrary.simpleMessage("Cancel"),
         "globalConfirm": MessageLookupByLibrary.simpleMessage("Confirm"),
         "globalHint": MessageLookupByLibrary.simpleMessage("Hint"),
+        "globalNext": MessageLookupByLibrary.simpleMessage("Next"),
         "globalSignIn": MessageLookupByLibrary.simpleMessage("Sign In"),
         "globalSingUp": MessageLookupByLibrary.simpleMessage("Sing Up"),
         "globalSumbit": MessageLookupByLibrary.simpleMessage("Sumbit"),
@@ -48,6 +49,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Verification Code"),
         "login_welcome":
             MessageLookupByLibrary.simpleMessage("Welcome to Quizzes"),
+        "profile_binding":
+            MessageLookupByLibrary.simpleMessage("Please verify you email."),
         "profile_logout": MessageLookupByLibrary.simpleMessage("Log Out"),
         "profile_logout_content": MessageLookupByLibrary.simpleMessage(
             "Confirm to logout your account ?"),
@@ -58,6 +61,11 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Type your Nick Name"),
         "tab_discover": MessageLookupByLibrary.simpleMessage("Discover"),
         "tab_profile": MessageLookupByLibrary.simpleMessage("Profile"),
-        "tab_quizzes": MessageLookupByLibrary.simpleMessage("Quizzes")
+        "tab_quizzes": MessageLookupByLibrary.simpleMessage("Quizzes"),
+        "verify": MessageLookupByLibrary.simpleMessage("Verify"),
+        "verify_exit_content": MessageLookupByLibrary.simpleMessage(
+            "Confirm to exit verify process ?"),
+        "verify_send_code": MessageLookupByLibrary.simpleMessage("Send"),
+        "verify_title": MessageLookupByLibrary.simpleMessage("Verify Email")
       };
 }

@@ -120,6 +120,16 @@ class L {
     );
   }
 
+  /// `Next`
+  String get globalNext {
+    return Intl.message(
+      'Next',
+      name: 'globalNext',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Discover`
   String get tab_discover {
     return Intl.message(
@@ -315,6 +325,56 @@ class L {
     return Intl.message(
       'Confirm to logout your account ?',
       name: 'profile_logout_content',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please verify you email.`
+  String get profile_binding {
+    return Intl.message(
+      'Please verify you email.',
+      name: 'profile_binding',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Confirm to exit verify process ?`
+  String get verify_exit_content {
+    return Intl.message(
+      'Confirm to exit verify process ?',
+      name: 'verify_exit_content',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Verify Email`
+  String get verify_title {
+    return Intl.message(
+      'Verify Email',
+      name: 'verify_title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Verify`
+  String get verify {
+    return Intl.message(
+      'Verify',
+      name: 'verify',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Send`
+  String get verify_send_code {
+    return Intl.message(
+      'Send',
+      name: 'verify_send_code',
       desc: '',
       args: [],
     );
