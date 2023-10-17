@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:quiz/modules/identityType.dart';
+import 'package:quiz/modules/identity_type.dart';
 
 part 'login_model.freezed.dart';
 part 'login_model.g.dart';

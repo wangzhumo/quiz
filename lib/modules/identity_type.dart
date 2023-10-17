@@ -1,6 +1,4 @@
-// ignore: file_names
 // ignore_for_file: constant_identifier_names, file_names
-
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 enum IdentityType {

@@ -1,7 +1,7 @@
 import 'package:quiz/modules/http/api_response.dart';
 import 'package:quiz/modules/http/host.dart';
 import 'package:quiz/modules/http/http.dart';
-import 'package:quiz/modules/identityType.dart';
+import 'package:quiz/modules/identity_type.dart';
 import 'package:quiz/modules/model/login_model.dart';
 
 abstract class ILoginRespository {

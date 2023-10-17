@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:go_router/go_router.dart';
-import 'package:quiz/modules/identityType.dart';
+import 'package:quiz/modules/identity_type.dart';
 import 'package:quiz/modules/model/login_model.dart';
 import 'package:quiz/modules/providers/provider.dart';
 import 'package:quiz/modules/repositories/login_repository.dart';
