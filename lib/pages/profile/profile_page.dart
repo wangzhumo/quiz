@@ -14,6 +14,7 @@ class ProfileTab extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final notifier = ref.read(profileProvider.notifier);
+    final user = ref.read(userProvider);
     return Scaffold(
       backgroundColor: Colors.grey[200],
       body: SafeArea(
@@ -21,7 +22,11 @@ class ProfileTab extends HookConsumerWidget {
         padding: EdgeInsets.only(left: 15.w, right: 15.w),
         child: Column(
           children: [
-            buildAvatarInfo(context, ref),
+            buildAvatarInfo(context, user),
+            GestureDetector(
+              onTap: () => notifier.onTapVerifyEmail(context),
+              child: buildEmailBindingHint(context, user),
+            ),
             Expanded(child: Container()),
             GestureDetector(
               onTap: () {
@@ -79,8 +84,41 @@ class ProfileTab extends HookConsumerWidget {
     );
   }
 
-  Widget buildAvatarInfo(BuildContext context, WidgetRef ref) {
-    User user = ref.read(userProvider);
+  Widget buildEmailBindingHint(BuildContext context, User user) {
+    if (user.status == 0) {
+      // no binding
+      return Container(
+        margin: EdgeInsetsDirectional.only(bottom: 24.w),
+        padding: EdgeInsets.only(left: 20.w, right: 20.w),
+        decoration: const BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.all(Radius.circular(12))),
+        width: double.infinity,
+        alignment: AlignmentDirectional.center,
+        height: 50.w,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              L.of(context).profile_binding,
+              textAlign: TextAlign.center,
+              style: TextStyle(color: Colors.blue[300]),
+            ),
+            Image.asset(
+              'assets/images/exclamation_circle.png',
+              height: 18.w,
+              width: 18.w,
+              color: Colors.blue[300],
+            )
+          ],
+        ),
+      );
+    } else {
+      return Container();
+    }
+  }
+
+  Widget buildAvatarInfo(BuildContext context, User user) {
     return Container(
         width: MediaQuery.of(context).size.width,
         height: 160.w,
