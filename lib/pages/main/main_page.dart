@@ -1,17 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:quiz/generated/l10n.dart';
 import 'package:quiz/modules/router/routers.dart';
+import 'package:quiz/modules/store/shared_preference.dart';
+import 'package:quiz/modules/store/user/user_provider.dart';
 import 'package:quiz/utils/screen_util.dart';
 
-class MainPage extends StatelessWidget {
+class MainPage extends ConsumerWidget {
   final Widget child;
 
   const MainPage({required this.child, super.key});
+  void bootstrap(UserManager um) {
+    // init user.
+    User? user = SharedPreference().getUser();
+    if (user != null) {
+      um.restore(user);
+    }
+    // show app
+  }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     SA.init(context, width: 375, height: 844, allowSystemFontScale: true);
     return AnnotatedRegion(
         value: SystemUiOverlayStyle.dark,

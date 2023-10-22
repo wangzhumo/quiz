@@ -113,12 +113,18 @@ class User implements Copyable {
 }
 
 class UserManager extends StateNotifier<User> {
-  UserManager() : super(User());
+  UserManager(this.preference) : super(User()) {
+    User? user = preference.getUser();
+    restore(user);
+  }
+  final SharedPreference preference;
   // restore
-  void restore(User user) {
-    state = user;
-    // update http token
-    Http.updateToken(user.token);
+  void restore(User? user) {
+    if (user != null) {
+      state = user;
+      // update http token
+      Http.updateToken(user.token);
+    }
   }
 
   // save login user
@@ -143,9 +149,12 @@ class UserManager extends StateNotifier<User> {
     Http.updateToken('');
     // reset
     state = User();
+    // clear user
+    preference.logout();
     return state;
   }
 }
 
-final userProvider =
-    StateNotifierProvider<UserManager, User>((_) => UserManager());
+final userProvider = StateNotifierProvider<UserManager, User>((_) {
+  return UserManager(SharedPreference());
+});

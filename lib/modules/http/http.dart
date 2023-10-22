@@ -10,6 +10,7 @@ import 'package:quiz/utils/text_utils.dart';
 class Http {
   /// dio object
   static late Dio dio;
+  static bool _initialized = false;
   static ParamInterceptor paramInterceptor = ParamInterceptor();
 
   /// default options
@@ -40,6 +41,7 @@ class Http {
       Duration(seconds: 3),
       Duration(seconds: 5),
     ]));
+    _initialized = true;
   }
 
   factory Http() => _getInstance();
@@ -165,7 +167,10 @@ class Http {
 
   /// release dio instance
   static release() {
-    dio.close(force: true);
+    if (_initialized) {
+      dio.close(force: true);
+      _initialized = false;
+    }
   }
 
   /// update token
