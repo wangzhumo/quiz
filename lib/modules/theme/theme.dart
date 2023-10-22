@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:quiz/modules/resources/colors.dart';
 import 'package:quiz/modules/store/shared_provider.dart';
@@ -125,6 +126,13 @@ class ThemeModeNotifier extends StateNotifier<ThemeMode> {
   final Preferences preferences;
 
   ThemeModeNotifier({required this.preferences}) : super(preferences.themeMode);
+
+  SystemUiOverlayStyle systemUiOverlay() {
+    if (state == ThemeMode.dark) {
+      return SystemUiOverlayStyle.light;
+    }
+    return SystemUiOverlayStyle.dark;
+  }
 
   void toggle() {
     if (state == ThemeMode.dark) {

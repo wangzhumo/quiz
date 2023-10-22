@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:quiz/generated/l10n.dart';
+import 'package:quiz/modules/theme/theme.dart';
 
 class QuizzesTab extends HookConsumerWidget {
   const QuizzesTab({super.key});
@@ -8,7 +9,7 @@ class QuizzesTab extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
-      backgroundColor: Colors.grey[200],
+      backgroundColor: Theme.of(context).custom.backgroundColor,
       body: Center(
         child: HookConsumer(
           builder: (context, ref, _) {

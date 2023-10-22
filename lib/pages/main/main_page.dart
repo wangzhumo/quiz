@@ -26,7 +26,7 @@ class MainPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     SA.init(context, width: 375, height: 844, allowSystemFontScale: true);
     return AnnotatedRegion(
-        value: SystemUiOverlayStyle.dark,
+        value: ref.watch(themeMode.notifier).systemUiOverlay(),
         child: Scaffold(
           backgroundColor: Colors.white,
           body: child,
