@@ -13,6 +13,7 @@ class RegisterPage extends HookConsumerWidget {
     final notifier = ref.read(registerProvider.notifier);
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.transparent,
         leading: Builder(builder: (BuildContext context) {
           return IconButton(
               onPressed: () {

@@ -5,6 +5,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:jazzicon/jazzicon.dart';
 import 'package:quiz/generated/l10n.dart';
 import 'package:quiz/modules/store/user/user_provider.dart';
+import 'package:quiz/modules/theme/theme.dart';
 import 'package:quiz/pages/profile/profile_state.dart';
 import 'package:quiz/utils/size_extension.dart';
 
@@ -16,7 +17,7 @@ class ProfileTab extends HookConsumerWidget {
     final notifier = ref.read(profileProvider.notifier);
     final user = ref.read(userProvider);
     return Scaffold(
-      backgroundColor: Colors.grey[200],
+      backgroundColor: Theme.of(context).custom.backgroundColor,
       body: SafeArea(
           child: Container(
         padding: EdgeInsets.only(left: 15.w, right: 15.w),
@@ -27,6 +28,10 @@ class ProfileTab extends HookConsumerWidget {
               onTap: () => notifier.onTapVerifyEmail(context),
               child: buildEmailBindingHint(context, user),
             ),
+            SizedBox(
+              height: 10.w,
+            ),
+            buildTheme(context, ref),
             Expanded(child: Container()),
             GestureDetector(
               onTap: () {
@@ -36,16 +41,16 @@ class ProfileTab extends HookConsumerWidget {
               },
               child: Container(
                 margin: EdgeInsetsDirectional.only(bottom: 24.w),
-                decoration: const BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.all(Radius.circular(12))),
+                decoration: BoxDecoration(
+                    color: Theme.of(context).custom.btColor,
+                    borderRadius: const BorderRadius.all(Radius.circular(12))),
                 width: double.infinity,
                 alignment: AlignmentDirectional.center,
                 height: 50.w,
                 child: Text(
                   L.of(context).profile_logout,
                   textAlign: TextAlign.center,
-                  style: TextStyle(color: Colors.red[300]),
+                  style: TextStyle(color: Colors.red[300], fontSize: 14.sp),
                 ),
               ),
             )
@@ -76,7 +81,7 @@ class ProfileTab extends HookConsumerWidget {
                 },
                 child: Text(
                   L.of(context).globalConfirm,
-                  style: const TextStyle(color: Colors.red),
+                  style: TextStyle(color: Colors.red, fontSize: 14.sp),
                 )),
           ],
         );
@@ -88,11 +93,10 @@ class ProfileTab extends HookConsumerWidget {
     if (user.status == 0) {
       // no binding
       return Container(
-        margin: EdgeInsetsDirectional.only(bottom: 24.w),
         padding: EdgeInsets.only(left: 20.w, right: 20.w),
-        decoration: const BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.all(Radius.circular(12))),
+        decoration: BoxDecoration(
+            color: Theme.of(context).custom.btColor,
+            borderRadius: const BorderRadius.all(Radius.circular(12))),
         width: double.infinity,
         alignment: AlignmentDirectional.center,
         height: 50.w,
@@ -102,7 +106,7 @@ class ProfileTab extends HookConsumerWidget {
             Text(
               L.of(context).profile_binding,
               textAlign: TextAlign.center,
-              style: TextStyle(color: Colors.blue[300]),
+              style: TextStyle(color: Colors.blue[300], fontSize: 14.sp),
             ),
             Image.asset(
               'assets/images/exclamation_circle.png',
@@ -140,10 +144,41 @@ class ProfileTab extends HookConsumerWidget {
               padding: EdgeInsets.only(top: 4.w),
               child: Text(
                 user.identity,
-                style: TextStyle(color: Colors.grey[600]),
+                style: TextStyle(color: Colors.grey[600], fontSize: 14.sp),
               ),
             ),
           ],
         ));
+  }
+
+  buildTheme(BuildContext context, WidgetRef ref) {
+    ThemeModeNotifier notifier = ref.read(themeMode.notifier);
+    ThemeMode theme = ref.watch(themeMode);
+    return Container(
+      margin: EdgeInsetsDirectional.only(bottom: 24.w),
+      padding: EdgeInsets.only(left: 20.w, right: 20.w),
+      decoration: BoxDecoration(
+          color: Theme.of(context).custom.btColor,
+          borderRadius: const BorderRadius.all(Radius.circular(12))),
+      width: double.infinity,
+      alignment: AlignmentDirectional.center,
+      height: 50.w,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text(
+            '${L.of(context).profile_theme} ${theme.name}',
+            textAlign: TextAlign.center,
+            style: Theme.of(context).textTheme.bodyMedium,
+          ),
+          CupertinoSwitch(
+              value: theme == ThemeMode.dark,
+              activeColor: Theme.of(context).custom.backgroundColor,
+              onChanged: (value) {
+                notifier.toggle();
+              })
+        ],
+      ),
+    );
   }
 }

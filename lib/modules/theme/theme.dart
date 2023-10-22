@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:quiz/modules/resources/colors.dart';
 import 'package:quiz/modules/store/shared_provider.dart';
 
 // THEME PROVIDERS
@@ -10,29 +11,101 @@ final themeMode = StateNotifierProvider<ThemeModeNotifier, ThemeMode>(
 );
 
 // THEMES
-final _theme = ThemeData(
-  brightness: Brightness.light,
-  platform: TargetPlatform.iOS,
-  highlightColor: Colors.blue[200],
-  colorScheme: ColorScheme.fromSeed(
-      brightness: Brightness.light, seedColor: Colors.blue),
-  useMaterial3: true,
-);
+final _theme = ThemeData.light().copyWith(
+    platform: TargetPlatform.iOS,
+    primaryColor: Colors.white,
+    canvasColor: Colors.transparent,
+    highlightColor: Colors.blue[200],
+    primaryIconTheme: const IconThemeData(color: Colors.black),
+    colorScheme: ColorScheme.fromSeed(
+        brightness: Brightness.light, seedColor: Colors.blue),
+    useMaterial3: true,
+    textTheme: const TextTheme(
+        bodyLarge: TextStyle(
+          fontSize: 16,
+          color: Colors.black,
+        ),
+        bodyMedium: TextStyle(
+          fontSize: 14,
+          color: Colors.black,
+        ),
+        bodySmall: TextStyle(
+          fontSize: 12,
+          color: Colors.black,
+        ),
+        labelLarge: TextStyle(
+          fontSize: 14,
+          color: Colors.black,
+        ),
+        labelMedium: TextStyle(
+          fontSize: 12,
+          color: Colors.black,
+        ),
+        headlineLarge: TextStyle(
+          fontSize: 21,
+          color: Colors.black,
+        ),
+        headlineMedium: TextStyle(
+          fontSize: 18,
+          color: Colors.black,
+        ),
+        headlineSmall: TextStyle(
+          fontSize: 16,
+          color: Colors.black,
+        )));
 
 final _customTheme = CustomThemeData(
-  imageSize: 150,
+  backgroundColor: QColors.grey200,
+  btColor: Colors.white,
 );
 
-final _darkTheme = ThemeData(
-  brightness: Brightness.dark,
-  platform: TargetPlatform.iOS,
-  highlightColor: Colors.blue[200],
-  colorScheme:
-      ColorScheme.fromSeed(brightness: Brightness.dark, seedColor: Colors.blue),
-  useMaterial3: true,
-);
+final _darkTheme = ThemeData.dark().copyWith(
+    platform: TargetPlatform.iOS,
+    highlightColor: Colors.blue[200],
+    canvasColor: Colors.transparent,
+    primaryColor: const Color(0xff323639),
+    primaryIconTheme: const IconThemeData(color: Colors.black),
+    colorScheme: ColorScheme.fromSeed(
+        brightness: Brightness.dark, seedColor: Colors.blue),
+    useMaterial3: true,
+    textTheme: const TextTheme(
+        bodyLarge: TextStyle(
+          fontSize: 16,
+          color: Colors.white,
+        ),
+        bodyMedium: TextStyle(
+          fontSize: 14,
+          color: Colors.white,
+        ),
+        bodySmall: TextStyle(
+          fontSize: 12,
+          color: Colors.white,
+        ),
+        labelLarge: TextStyle(
+          fontSize: 14,
+          color: Colors.white,
+        ),
+        labelMedium: TextStyle(
+          fontSize: 12,
+          color: Colors.white,
+        ),
+        headlineLarge: TextStyle(
+          fontSize: 21,
+          color: Colors.white,
+        ),
+        headlineMedium: TextStyle(
+          fontSize: 18,
+          color: Colors.white,
+        ),
+        headlineSmall: TextStyle(
+          fontSize: 16,
+          color: Colors.white,
+        )));
 
-final _customDarkTheme = CustomThemeData();
+final _customDarkTheme = CustomThemeData(
+  backgroundColor: QColors.grey800,
+  btColor: Colors.black,
+);
 
 // EXTENSIONS AND CLASSES
 extension CustomTheme on ThemeData {
@@ -41,11 +114,11 @@ extension CustomTheme on ThemeData {
 }
 
 class CustomThemeData {
-  final double imageSize;
+  final Color backgroundColor;
+  final Color btColor;
 
-  CustomThemeData({
-    this.imageSize = 100,
-  });
+  CustomThemeData(
+      {this.backgroundColor = Colors.white, this.btColor = Colors.white});
 }
 
 class ThemeModeNotifier extends StateNotifier<ThemeMode> {

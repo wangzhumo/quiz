@@ -320,6 +320,16 @@ class L {
     );
   }
 
+  /// `Theme `
+  String get profile_theme {
+    return Intl.message(
+      'Theme ',
+      name: 'profile_theme',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Confirm to logout your account ?`
   String get profile_logout_content {
     return Intl.message(

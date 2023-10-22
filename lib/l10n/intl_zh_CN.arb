@@ -27,6 +27,7 @@
     "register_nick" : "NickName",
     "register_nick_input" : "Type your Nick Name",
     "profile_logout" : "Log Out",
+    "profile_theme" : "Theme ",
     "profile_logout_content" : "Confirm to logout your account ?",
     "profile_binding" : "Please verify you email.",
     "verify_exit_content" : "Confirm to exit verify process ?",

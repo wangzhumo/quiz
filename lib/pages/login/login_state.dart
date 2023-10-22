@@ -52,6 +52,10 @@ class LoginNotifier extends StateNotifier<LoginState> {
     GoRouter.of(context).push(Routes.register);
   }
 
+  void onTapBack(BuildContext context) {
+    GoRouter.of(context).go(Routes.mainTabQuizzes);
+  }
+
   updateCredential(String credential) {
     LoginState newState = state.copyWith(credential: credential);
     state = updateEnable(newState);

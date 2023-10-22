@@ -54,6 +54,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "profile_logout": MessageLookupByLibrary.simpleMessage("Log Out"),
         "profile_logout_content": MessageLookupByLibrary.simpleMessage(
             "Confirm to logout your account ?"),
+        "profile_theme": MessageLookupByLibrary.simpleMessage("Theme "),
         "register_email":
             MessageLookupByLibrary.simpleMessage("Register With Email"),
         "register_nick": MessageLookupByLibrary.simpleMessage("NickName"),

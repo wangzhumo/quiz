@@ -8,12 +8,24 @@ class LoginPage extends HookConsumerWidget {
   const LoginPage({super.key});
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final notifier = ref.read(loginProvider.notifier);
+    final state = ref.watch(loginProvider);
     return Scaffold(
-      appBar: AppBar(automaticallyImplyLeading: false),
+      appBar: AppBar(
+          automaticallyImplyLeading: false,
+          backgroundColor: Colors.transparent,
+          leading: Builder(builder: (BuildContext context) {
+            return Padding(
+              padding: EdgeInsets.only(left: 12.w),
+              child: IconButton(
+                  onPressed: () {
+                    notifier.onTapBack(context);
+                  },
+                  icon: const Icon(Icons.close)),
+            );
+          })),
       body: HookConsumer(
         builder: (context, ref, _) {
-          final notifier = ref.read(loginProvider.notifier);
-          final state = ref.watch(loginProvider);
           onPressed() {
             notifier.onTabSignIn(context);
           }

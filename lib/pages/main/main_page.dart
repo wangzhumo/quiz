@@ -6,6 +6,7 @@ import 'package:quiz/generated/l10n.dart';
 import 'package:quiz/modules/router/routers.dart';
 import 'package:quiz/modules/store/shared_preference.dart';
 import 'package:quiz/modules/store/user/user_provider.dart';
+import 'package:quiz/modules/theme/theme.dart';
 import 'package:quiz/utils/screen_util.dart';
 
 class MainPage extends ConsumerWidget {
@@ -30,7 +31,7 @@ class MainPage extends ConsumerWidget {
           backgroundColor: Colors.white,
           body: child,
           bottomNavigationBar: BottomNavigationBar(
-            backgroundColor: Colors.grey[200],
+            backgroundColor: Theme.of(context).custom.backgroundColor,
             selectedItemColor: Colors.blueAccent,
             unselectedItemColor: Colors.grey[600],
             items: [
