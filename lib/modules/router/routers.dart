@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:quiz/modules/store/user/user_provider.dart';
 import 'package:quiz/pages/discover/discover_page.dart';
 import 'package:quiz/pages/error/error_page.dart';
+import 'package:quiz/pages/intro/intro_page.dart';
 import 'package:quiz/pages/login/login_page.dart';
 import 'package:quiz/pages/main/main_page.dart';
 import 'package:flutter/material.dart';
@@ -28,6 +29,9 @@ class Routes {
   static String login = "/login";
   // verify code
   static String verfiyCode = "/verify";
+  // quizzes intro
+  static String quizIntro = "/quizzes/intro";
+  static String quizIntroSubPath = "intro";
 
   // 个人资料
   static String loginProfileEditor = "/login/ProfileEditor";

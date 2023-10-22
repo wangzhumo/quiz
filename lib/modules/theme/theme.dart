@@ -21,6 +21,10 @@ final _theme = ThemeData.light().copyWith(
     colorScheme: ColorScheme.fromSeed(
         brightness: Brightness.light, seedColor: Colors.blue),
     useMaterial3: true,
+    appBarTheme: const AppBarTheme(
+      backgroundColor: Colors.transparent,
+      systemOverlayStyle: SystemUiOverlayStyle.dark,
+    ),
     textTheme: const TextTheme(
         bodyLarge: TextStyle(
           fontSize: 16,
@@ -58,6 +62,7 @@ final _theme = ThemeData.light().copyWith(
 final _customTheme = CustomThemeData(
   backgroundColor: QColors.grey200,
   btColor: Colors.white,
+  textColor: Colors.black,
 );
 
 final _darkTheme = ThemeData.dark().copyWith(
@@ -69,6 +74,10 @@ final _darkTheme = ThemeData.dark().copyWith(
     colorScheme: ColorScheme.fromSeed(
         brightness: Brightness.dark, seedColor: Colors.blue),
     useMaterial3: true,
+    appBarTheme: const AppBarTheme(
+      backgroundColor: Colors.transparent,
+      systemOverlayStyle: SystemUiOverlayStyle.light,
+    ),
     textTheme: const TextTheme(
         bodyLarge: TextStyle(
           fontSize: 16,
@@ -106,6 +115,7 @@ final _darkTheme = ThemeData.dark().copyWith(
 final _customDarkTheme = CustomThemeData(
   backgroundColor: QColors.grey800,
   btColor: Colors.black,
+  textColor: Colors.white,
 );
 
 // EXTENSIONS AND CLASSES
@@ -117,9 +127,11 @@ extension CustomTheme on ThemeData {
 class CustomThemeData {
   final Color backgroundColor;
   final Color btColor;
-
+  final Color textColor;
   CustomThemeData(
-      {this.backgroundColor = Colors.white, this.btColor = Colors.white});
+      {this.backgroundColor = Colors.white,
+      this.btColor = Colors.white,
+      this.textColor = Colors.white});
 }
 
 class ThemeModeNotifier extends StateNotifier<ThemeMode> {
