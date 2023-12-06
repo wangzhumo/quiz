@@ -5,81 +5,57 @@ final GlobalKey<NavigatorState> _shellNavigatorKey =
 
 final routers = GoRouter(
   routes: <RouteBase>[
-    ShellRoute(
-        navigatorKey: _shellNavigatorKey,
-        pageBuilder: (BuildContext context, GoRouterState state, Widget child) {
-          return CustomTransitionPage(
-              child: MainPage(child: child),
-              transitionDuration: const Duration(milliseconds: 2000),
-              transitionsBuilder: (BuildContext context,
-                  Animation<double> animation,
-                  Animation<double> secondaryAnimation,
-                  Widget child) {
-                final tween =
-                    Tween(begin: const Offset(0.0, 1.0), end: Offset.zero);
-                return SlideTransition(
-                  position: animation.drive(tween),
-                  child: child,
-                );
-              });
+    GoRoute(
+      path: Routes.login,
+      pageBuilder: (context, state) => CustomTransitionPage(
+        child: const LoginPage(),
+        transitionsBuilder: (BuildContext context, Animation<double> animation,
+            Animation<double> secondaryAnimation, Widget child) {
+          return SlideTransition(
+              position: Tween<Offset>(
+                begin: const Offset(0, 1),
+                end: Offset.zero,
+              ).animate(animation),
+              child: child);
         },
-        routes: <RouteBase>[
-          GoRoute(
-            path: Routes.mainTabQuizzes,
-            builder: (context, state) => const QuizzesTab(),
-          ),
-          GoRoute(
-              path: Routes.mainTabDiscover,
-              builder: (context, state) {
-                return const DiscoverTab();
-              }),
-          GoRoute(
-            path: Routes.mainTabProfile,
-            builder: (context, state) {
-              return const ProfileTab();
-            },
-            redirect: (context, state) {
-              ProviderContainer container = ProviderScope.containerOf(context);
-              bool loginState = container.read(userProvider).hasLogin();
-              if (!loginState) {
-                return Routes.login;
-              }
-              return null;
-            },
-          ),
-        ]),
-    GoRoute(
-        path: Routes.login,
-        builder: (context, state) => const LoginPage(),
-        routes: [
-          GoRoute(
-              path: Routes.registerSubPath,
-              builder: (context, state) => const RegisterPage())
-        ]),
-    GoRoute(
-      path: Routes.verfiyCode,
-      builder: (context, GoRouterState state) {
-        String type = state.pathParameters['type'] ?? 'email';
-        return VerifyPage(type);
-      },
+      ),
+      routes: [
+        GoRoute(
+            path: Routes.registerSubPath,
+            builder: (context, state) => const RegisterPage())
+      ],
     ),
     GoRoute(
-      path: Routes.quizIntro,
-      pageBuilder: (context, state) {
-        return CustomTransitionPage(
-            child: const IntroPage(),
-            transitionsBuilder:
-                (context, animation, secondaryAnimation, child) {
-              return FadeTransition(
-                opacity:
-                    CurveTween(curve: Curves.easeInOutCirc).animate(animation),
-                child: child,
-              );
-            });
-      },
-    )
+        path: Routes.main,
+        builder: (context, state) => const MainPage(),
+        routes: [
+          GoRoute(
+            name: Routes.quizIntro,
+            path: Routes.quizIntro,
+            pageBuilder: (context,GoRouterState state) {
+              int index = (state.extra ?? 0) as int;
+              Logger.instance.debug(state);
+              return CustomTransitionPage(
+                  child: IntroPage(index),
+                  transitionsBuilder:
+                      (context, animation, secondaryAnimation, child) {
+                    return FadeTransition(
+                      opacity: CurveTween(curve: Curves.easeInOutCirc)
+                          .animate(animation),
+                      child: child,
+                    );
+                  });
+            },
+          )
+        ]),
+    GoRoute(
+        path: Routes.verfiyCode,
+        builder: (context, GoRouterState state) {
+          String type = state.pathParameters['type'] ?? 'email';
+          return VerifyPage(type);
+        })
   ],
-  initialLocation: Routes.mainTabQuizzes,
+  initialLocation: Routes.main,
   debugLogDiagnostics: true,
   errorBuilder: (context, state) => const GlobalErrorPage(),
 );

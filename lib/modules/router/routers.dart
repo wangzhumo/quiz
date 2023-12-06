@@ -11,6 +11,7 @@ import 'package:quiz/pages/profile/profile_page.dart';
 import 'package:quiz/pages/quiz/quiz_page.dart';
 import 'package:quiz/pages/reisger/register_page.dart';
 import 'package:quiz/pages/verify/verify_page.dart';
+import 'package:quiz/utils/log/logger.dart';
 part 'routers.config.dart';
 
 class Routes {
@@ -30,7 +31,7 @@ class Routes {
   // verify code
   static String verfiyCode = "/verify";
   // quizzes intro
-  static String quizIntro = "/quizzes/intro";
+  static String quizIntro = "intro";
   static String quizIntroSubPath = "intro";
 
   // 个人资料
