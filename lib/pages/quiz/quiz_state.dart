@@ -8,8 +8,8 @@ class QuizState {}
 class QuizNotifier extends StateNotifier<QuizState> {
   QuizNotifier() : super(QuizState());
 
-  void onTapItem(BuildContext context) {
-    GoRouter.of(context).go(Routes.quizIntro);
+  void onTapItem(BuildContext context,int index) {
+    GoRouter.of(context).pushNamed(Routes.quizIntro, extra: index);
   }
 }
 

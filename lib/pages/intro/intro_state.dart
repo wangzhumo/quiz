@@ -19,7 +19,7 @@ class IntroNotifier extends StateNotifier<IntroState> {
   IntroNotifier() : super(IntroState(title: "", described: "", coverUrl: ""));
 
   void onTapBack(BuildContext context) {
-    GoRouter.of(context).go(Routes.mainTabQuizzes);
+    GoRouter.of(context).pop();
   }
 }
 

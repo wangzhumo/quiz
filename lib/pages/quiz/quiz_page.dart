@@ -19,25 +19,26 @@ class QuizzesTab extends HookConsumerWidget {
     );
   }
 
+  // https://err.com/code
   Widget _buildQuizItem(
       context, int index, WidgetRef ref, QuizNotifier notifier) {
     return Card(
         margin: EdgeInsets.only(top: 14.w, left: 18.w, right: 18.w),
         clipBehavior: Clip.hardEdge,
         child: GestureDetector(
-          onTap: () => notifier.onTapItem(context),
+          onTap: () => notifier.onTapItem(context,index),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Stack(
                 children: [
                   Hero(
-                    tag: 'quiz-intro-image',
+                    tag: 'quiz-intro-image-$index',
                     child: CachedNetworkImage(
                       height: 200.w,
                       width: MediaQuery.of(context).size.width,
                       fit: BoxFit.cover,
-                      imageUrl: 'https://err.com/code',
+                      imageUrl: 'https://z1.ax1x.com/2023/12/06/picA7kT.png',
                       errorWidget:
                           (BuildContext context, String url, Object error) {
                         return Image.asset(

@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:go_router/go_router.dart';
 import 'package:quiz/generated/l10n.dart';
-import 'package:quiz/modules/router/routers.dart';
 import 'package:quiz/modules/store/shared_preference.dart';
 import 'package:quiz/modules/store/user/user_provider.dart';
 import 'package:quiz/modules/theme/theme.dart';
 import 'package:quiz/utils/screen_util.dart';
 
-class MainPage extends ConsumerWidget {
-  final Widget child;
+import 'main_state.dart';
 
-  const MainPage({required this.child, super.key});
+
+class MainPage extends ConsumerWidget {
+
+  const MainPage({super.key});
   void bootstrap(UserManager um) {
     // init user.
     User? user = SharedPreference().getUser();
@@ -28,7 +28,12 @@ class MainPage extends ConsumerWidget {
         value: ref.watch(themeMode.notifier).systemUiOverlay(),
         child: Scaffold(
           backgroundColor: Colors.white,
-          body: child,
+          body: PageView(
+            physics: const ClampingScrollPhysics(),
+            controller: ref.read(mainProvider.notifier).pageController,
+            children: ref.read(mainProvider.notifier).pageList,
+            onPageChanged: (index) => _onItemTaped(index,ref),
+          ),
           bottomNavigationBar: BottomNavigationBar(
             backgroundColor: Theme.of(context).custom.backgroundColor,
             selectedItemColor: Colors.blueAccent,
@@ -44,37 +49,13 @@ class MainPage extends ConsumerWidget {
                   icon: const Icon(Icons.person_outlined),
                   label: L.of(context).tab_profile)
             ],
-            currentIndex: _calculateSelectedIndex(context),
-            onTap: (index) => _onItemTaped(index, context),
+            currentIndex: ref.watch(mainProvider).currentPageIndex,
+            onTap: (index) => _onItemTaped(index,ref),
           ),
         ));
   }
 
-  void _onItemTaped(int index, BuildContext context) {
-    switch (index) {
-      case 0:
-        GoRouter.of(context).go(Routes.mainTabQuizzes);
-        break;
-      case 1:
-        GoRouter.of(context).go(Routes.mainTabDiscover);
-        break;
-      case 2:
-        GoRouter.of(context).go(Routes.mainTabProfile);
-        break;
-    }
-  }
-
-  int _calculateSelectedIndex(BuildContext context) {
-    final String location = GoRouterState.of(context).uri.toString();
-    if (location.startsWith(Routes.mainTabQuizzes)) {
-      return 0;
-    }
-    if (location.startsWith(Routes.mainTabDiscover)) {
-      return 1;
-    }
-    if (location.startsWith(Routes.mainTabProfile)) {
-      return 2;
-    }
-    return 0;
+  void _onItemTaped(int index, WidgetRef ref) {
+    ref.read(mainProvider.notifier).onPageChanged(index);
   }
 }
