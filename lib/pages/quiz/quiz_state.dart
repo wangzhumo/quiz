@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -10,6 +12,18 @@ class QuizNotifier extends StateNotifier<QuizState> {
 
   void onTapItem(BuildContext context,int index) {
     GoRouter.of(context).pushNamed(Routes.quizIntro, extra: index);
+  }
+
+  void onAdvanceCategoryTap(BuildContext context) {
+    GoRouter.of(context).pushNamed(Routes.quizAdvance);
+  }
+
+  void onAdvanceSearchTap(BuildContext context) {
+    GoRouter.of(context).pushNamed(Routes.quizSearch);
+  }
+
+  bool hasQuiz() {
+    return false;
   }
 }
 

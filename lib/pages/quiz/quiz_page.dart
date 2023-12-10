@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:quiz/modules/theme/theme.dart';
 import 'package:quiz/pages/quiz/quiz_state.dart';
@@ -16,6 +17,37 @@ class QuizzesTab extends HookConsumerWidget {
       body: ListView.builder(itemBuilder: ((context, index) {
         return _buildQuizItem(context, index, ref, notifier);
       })),
+      floatingActionButton: Offstage(
+        offstage: ref.read(quizProvider.notifier).hasQuiz(),
+        child: SpeedDial(
+          shape: const CircleBorder(),
+          backgroundColor: Colors.white,
+          children: [
+            SpeedDialChild(
+              shape: const CircleBorder(),
+              child: const Icon(Icons.category_rounded),
+              backgroundColor: Theme.of(context).highlightColor,
+              foregroundColor: Colors.white,
+              onTap: () {
+                notifier.onAdvanceCategoryTap(context);
+              },
+            ),
+            SpeedDialChild(
+              shape: const CircleBorder(),
+              child: const Icon(Icons.search),
+              backgroundColor:  Theme.of(context).highlightColor,
+              foregroundColor: Colors.white,
+              onTap: () {
+                notifier.onAdvanceSearchTap(context);
+              },
+            ),
+          ],
+          child: Icon(
+            Icons.filter_alt,
+            color: Theme.of(context).highlightColor,
+          ),
+        ),
+      ),
     );
   }
 
@@ -26,7 +58,7 @@ class QuizzesTab extends HookConsumerWidget {
         margin: EdgeInsets.only(top: 14.w, left: 18.w, right: 18.w),
         clipBehavior: Clip.hardEdge,
         child: GestureDetector(
-          onTap: () => notifier.onTapItem(context,index),
+          onTap: () => notifier.onTapItem(context, index),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [

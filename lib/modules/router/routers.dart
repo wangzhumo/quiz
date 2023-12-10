@@ -1,17 +1,15 @@
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:quiz/modules/store/user/user_provider.dart';
-import 'package:quiz/pages/discover/discover_page.dart';
+import 'package:quiz/pages/advance/advance_page.dart';
 import 'package:quiz/pages/error/error_page.dart';
 import 'package:quiz/pages/intro/intro_page.dart';
 import 'package:quiz/pages/login/login_page.dart';
 import 'package:quiz/pages/main/main_page.dart';
 import 'package:flutter/material.dart';
-import 'package:quiz/pages/profile/profile_page.dart';
-import 'package:quiz/pages/quiz/quiz_page.dart';
 import 'package:quiz/pages/reisger/register_page.dart';
+import 'package:quiz/pages/search/search_page.dart';
 import 'package:quiz/pages/verify/verify_page.dart';
 import 'package:quiz/utils/log/logger.dart';
+
 part 'routers.config.dart';
 
 class Routes {
@@ -32,7 +30,10 @@ class Routes {
   static String verfiyCode = "/verify";
   // quizzes intro
   static String quizIntro = "intro";
-  static String quizIntroSubPath = "intro";
+  // quizzes advance
+  static String quizAdvance = "advance";
+  // search
+  static String quizSearch = "search";
 
   // 个人资料
   static String loginProfileEditor = "/login/ProfileEditor";

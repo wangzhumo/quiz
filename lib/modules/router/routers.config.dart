@@ -46,14 +46,26 @@ final routers = GoRouter(
                     );
                   });
             },
-          )
+          ),
+          GoRoute(
+              path: Routes.quizAdvance,
+              name: Routes.quizAdvance,
+              builder: (context, GoRouterState state) {
+                return const QuizzesAdvancePage();
+              }),
+          GoRoute(
+              path: Routes.quizSearch,
+              name: Routes.quizSearch,
+              builder: (context, GoRouterState state) {
+                return const QuizzesSearchPage();
+              })
         ]),
     GoRoute(
         path: Routes.verfiyCode,
         builder: (context, GoRouterState state) {
           String type = state.pathParameters['type'] ?? 'email';
           return VerifyPage(type);
-        })
+        }),
   ],
   initialLocation: Routes.main,
   debugLogDiagnostics: true,

@@ -50,7 +50,10 @@ class MainPage extends ConsumerWidget {
                   label: L.of(context).tab_profile)
             ],
             currentIndex: ref.watch(mainProvider).currentPageIndex,
-            onTap: (index) => _onItemTaped(index,ref),
+            onTap: (index) => {
+              ref.read(mainProvider.notifier).pageController.jumpToPage(index),
+              _onItemTaped(index,ref)
+            },
           ),
         ));
   }
