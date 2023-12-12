@@ -17,6 +17,8 @@ final _theme = ThemeData.light().copyWith(
     primaryColor: Colors.white,
     canvasColor: Colors.transparent,
     highlightColor: Colors.blue[200],
+    hintColor: QColors.grey200,
+    dividerColor: QColors.line,
     primaryIconTheme: const IconThemeData(color: Colors.black),
     colorScheme: ColorScheme.fromSeed(
         brightness: Brightness.light, seedColor: Colors.blue),
@@ -58,22 +60,16 @@ final _theme = ThemeData.light().copyWith(
           color: Colors.black,
         )));
 
-final _customTheme = CustomThemeData(
-  backgroundColor: QColors.grey200,
-  btColor: Colors.white,
-  textColor: Colors.black,
-  hintTextColor: Colors.black38,
-);
-
 final _darkTheme = ThemeData.dark().copyWith(
     platform: TargetPlatform.iOS,
     highlightColor: Colors.blue[200],
+    hintColor: QColors.grey200,
+    dividerColor: QColors.line,
     canvasColor: Colors.transparent,
     primaryColor: const Color(0xff323639),
     primaryIconTheme: const IconThemeData(color: Colors.black),
     colorScheme: ColorScheme.fromSeed(
         brightness: Brightness.dark, seedColor: Colors.blue),
-    useMaterial3: true,
     appBarTheme: const AppBarTheme(
       backgroundColor: Colors.transparent,
       systemOverlayStyle: SystemUiOverlayStyle.light,
@@ -112,11 +108,19 @@ final _darkTheme = ThemeData.dark().copyWith(
           color: Colors.white,
         )));
 
+final _customTheme = CustomThemeData(
+    backgroundColor: QColors.grey200,
+    btColor: Colors.white,
+    textColor: Colors.black,
+    hintTextColor: Colors.black38,
+    selectedColor: Colors.blueAccent);
+
 final _customDarkTheme = CustomThemeData(
   backgroundColor: QColors.grey800,
   btColor: Colors.black,
   textColor: Colors.white,
   hintTextColor: Colors.white30,
+  selectedColor: Colors.lightBlue,
 );
 
 // EXTENSIONS AND CLASSES
@@ -130,11 +134,13 @@ class CustomThemeData {
   final Color btColor;
   final Color textColor;
   final Color hintTextColor;
+  final Color selectedColor;
   CustomThemeData(
       {this.backgroundColor = Colors.white,
       this.btColor = Colors.white,
       this.textColor = Colors.white,
-      this.hintTextColor = Colors.white});
+      this.hintTextColor = Colors.white,
+      this.selectedColor = Colors.blue});
 }
 
 class ThemeModeNotifier extends StateNotifier<ThemeMode> {

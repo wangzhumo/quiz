@@ -22,14 +22,28 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "advance_sort": MessageLookupByLibrary.simpleMessage("Sort"),
+        "advance_tags": MessageLookupByLibrary.simpleMessage("Tag"),
         "appName": MessageLookupByLibrary.simpleMessage("Quizzes"),
+        "globalAbility": MessageLookupByLibrary.simpleMessage("Ability"),
         "globalCancel": MessageLookupByLibrary.simpleMessage("Cancel"),
+        "globalCharacter": MessageLookupByLibrary.simpleMessage("Character"),
         "globalConfirm": MessageLookupByLibrary.simpleMessage("Confirm"),
+        "globalEmotion": MessageLookupByLibrary.simpleMessage("Emotion"),
+        "globalEntertainment":
+            MessageLookupByLibrary.simpleMessage("Entertainment"),
+        "globalHealth": MessageLookupByLibrary.simpleMessage("Health"),
         "globalHint": MessageLookupByLibrary.simpleMessage("Hint"),
         "globalNext": MessageLookupByLibrary.simpleMessage("Next"),
+        "globalPopular": MessageLookupByLibrary.simpleMessage("Popular"),
+        "globalRating": MessageLookupByLibrary.simpleMessage("Rating"),
+        "globalRecently": MessageLookupByLibrary.simpleMessage("Recently"),
+        "globalRelationship":
+            MessageLookupByLibrary.simpleMessage("Relationship"),
         "globalSignIn": MessageLookupByLibrary.simpleMessage("Sign In"),
         "globalSingUp": MessageLookupByLibrary.simpleMessage("Sing Up"),
         "globalSumbit": MessageLookupByLibrary.simpleMessage("Sumbit"),
+        "globalWork": MessageLookupByLibrary.simpleMessage("Work"),
         "login_code_input":
             MessageLookupByLibrary.simpleMessage("Enter the code here"),
         "login_email": MessageLookupByLibrary.simpleMessage("E-Mail"),

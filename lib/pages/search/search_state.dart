@@ -1,7 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:quiz/modules/database/model/quiz_search.dart';
-import 'package:quiz/modules/database/model/search_tag_manager.dart';
+import 'package:quiz/modules/database/model/search/quiz_search.dart';
+import 'package:quiz/modules/database/model/search/search_tag_manager.dart';
 
 part 'search_state.freezed.dart';
 
@@ -50,7 +50,7 @@ class QuizSearchNotifier extends StateNotifier<QuizSearchState> {
   }
 
   void onSearchKeywordRemove(SearchTag tag) {
-    searchTag.then((value) => value.removeHistory(tag.id)).then((value)  {
+    searchTag.then((value) => value.removeHistory(tag.id)).then((value) {
       List<SearchTag> newList = List.empty(growable: true);
       newList.addAll(state.historyKeys);
       newList.removeWhere((element) => element.id == tag.id);

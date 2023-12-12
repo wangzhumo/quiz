@@ -130,6 +130,106 @@ class L {
     );
   }
 
+  /// `Popular`
+  String get globalPopular {
+    return Intl.message(
+      'Popular',
+      name: 'globalPopular',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Recently`
+  String get globalRecently {
+    return Intl.message(
+      'Recently',
+      name: 'globalRecently',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Rating`
+  String get globalRating {
+    return Intl.message(
+      'Rating',
+      name: 'globalRating',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Emotion`
+  String get globalEmotion {
+    return Intl.message(
+      'Emotion',
+      name: 'globalEmotion',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Character`
+  String get globalCharacter {
+    return Intl.message(
+      'Character',
+      name: 'globalCharacter',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Work`
+  String get globalWork {
+    return Intl.message(
+      'Work',
+      name: 'globalWork',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Relationship`
+  String get globalRelationship {
+    return Intl.message(
+      'Relationship',
+      name: 'globalRelationship',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Ability`
+  String get globalAbility {
+    return Intl.message(
+      'Ability',
+      name: 'globalAbility',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Health`
+  String get globalHealth {
+    return Intl.message(
+      'Health',
+      name: 'globalHealth',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Entertainment`
+  String get globalEntertainment {
+    return Intl.message(
+      'Entertainment',
+      name: 'globalEntertainment',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Discover`
   String get tab_discover {
     return Intl.message(
@@ -385,6 +485,26 @@ class L {
     return Intl.message(
       'Send',
       name: 'verify_send_code',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sort`
+  String get advance_sort {
+    return Intl.message(
+      'Sort',
+      name: 'advance_sort',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Tag`
+  String get advance_tags {
+    return Intl.message(
+      'Tag',
+      name: 'advance_tags',
       desc: '',
       args: [],
     );

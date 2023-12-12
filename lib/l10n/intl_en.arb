@@ -7,6 +7,17 @@
   "globalHint": "Hint",
   "globalCancel": "Cancel",
   "globalNext": "Next",
+  "globalPopular" : "Popular",
+  "globalRecently" : "Recently",
+  "globalRating" : "Rating",
+  "globalEmotion" : "Emotion",
+  "globalCharacter" : "Character",
+  "globalWork" : "Work",
+  "globalRelationship" : "Relationship",
+  "globalAbility" : "Ability",
+  "globalHealth" : "Health",
+  "globalEntertainment" : "Entertainment",
+  
   "tab_discover": "Discover",
   "tab_profile": "Profile",
   "tab_quizzes": "Quizzes",
@@ -33,5 +44,7 @@
   "verify_exit_content" : "Confirm to exit verify process ?",
   "verify_title": "Verify Email",
   "verify": "Verify",
-  "verify_send_code" : "Send"
+  "verify_send_code" : "Send",
+  "advance_sort" : "Sort",
+  "advance_tags" : "Tag"
 }

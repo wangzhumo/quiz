@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:quiz/components/searchBar/app_search_bar.dart';
-import 'package:quiz/modules/database/model/quiz_search.dart';
+import 'package:quiz/modules/database/model/search/quiz_search.dart';
 import 'package:quiz/modules/theme/theme.dart';
 import 'package:quiz/pages/search/search_state.dart';
 import 'package:quiz/utils/size_extension.dart';
