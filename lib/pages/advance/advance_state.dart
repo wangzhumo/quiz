@@ -37,7 +37,7 @@ class QuizAdvanceNotifier extends StateNotifier<QuizAdvanceState> {
   }
 
   void onSearchTap(BuildContext context) {
-    GoRouter.of(context).replaceNamed(Routes.quizSearch);
+    GoRouter.of(context).pushNamed(Routes.quizSearch);
   }
 
   void onTagSelected(FilterTag tag, bool checked) {

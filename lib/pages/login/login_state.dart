@@ -6,6 +6,7 @@ import 'package:quiz/modules/identity_type.dart';
 import 'package:quiz/modules/model/login_model.dart';
 import 'package:quiz/modules/providers/provider.dart';
 import 'package:quiz/modules/repositories/login_repository.dart';
+import 'package:quiz/modules/router/router_helper.dart';
 import 'package:quiz/modules/router/routers.dart';
 import 'package:quiz/modules/store/user/user_provider.dart';
 
@@ -43,7 +44,7 @@ class LoginNotifier extends StateNotifier<LoginState> {
             identity: um.identity,
             identityType: um.identityType.index,
             lastAt: um.lastAt));
-        GoRouter.of(context).go(Routes.mainTabQuizzes);
+        RouterHelper().homePage(context);
       }
     });
   }
@@ -53,7 +54,7 @@ class LoginNotifier extends StateNotifier<LoginState> {
   }
 
   void onTapBack(BuildContext context) {
-    GoRouter.of(context).go(Routes.mainTabQuizzes);
+    RouterHelper().homePage(context);
   }
 
   updateCredential(String credential) {

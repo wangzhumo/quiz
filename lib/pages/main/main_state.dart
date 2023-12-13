@@ -10,7 +10,7 @@ class MainState {
 }
 
 class MainNotifier extends StateNotifier<MainState> {
-  final PageController pageController = PageController();
+  final PageController pageController = PageController(keepPage: true);
 
   // child
   final List<Widget> pageList = [
@@ -21,37 +21,17 @@ class MainNotifier extends StateNotifier<MainState> {
 
   MainNotifier() : super(MainState());
 
+  void onControllerInit(int initialPage) {
+    MainState newState = MainState();
+    newState.currentPageIndex = initialPage;
+    state = newState;
+  }
+
   void onPageChanged(int index) {
     MainState newState = MainState();
     newState.currentPageIndex = index;
     state = newState;
   }
-
-// routes: [
-// GoRoute(
-// path: Routes.mainTabQuizzes,
-// builder: (context, state) => const QuizzesTab(),
-// ),
-// GoRoute(
-// path: Routes.mainTabDiscover,
-// builder: (context, state) {
-// return const DiscoverTab();
-// }),
-// GoRoute(
-// path: Routes.mainTabProfile,
-// builder: (context, state) {
-// return const ProfileTab();
-// },
-// redirect: (context, state) {
-// ProviderContainer container = ProviderScope.containerOf(context);
-// bool loginState = container.read(userProvider).hasLogin();
-// if (!loginState) {
-// return Routes.login;
-// }
-// return null;
-// },
-// ),
-// ])
 }
 
 final mainProvider =

@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:quiz/generated/l10n.dart';
 import 'package:quiz/modules/resources/colors.dart';
+import 'package:quiz/modules/router/router_helper.dart';
 import 'package:quiz/modules/router/routers.dart';
 import 'package:quiz/pages/verify/verify_state.dart';
 import 'package:quiz/utils/size_extension.dart';
@@ -35,7 +36,7 @@ class VerifyPage extends HookConsumerWidget {
           return IconButton(
               onPressed: () {
                 _exitBindingDialog(context, () {
-                  GoRouter.of(context).go(Routes.mainTabQuizzes);
+                  RouterHelper().homePage(context);
                 });
               },
               icon: const Icon(CupertinoIcons.back));

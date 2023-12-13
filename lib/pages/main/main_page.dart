@@ -8,15 +8,14 @@ import 'package:quiz/utils/screen_util.dart';
 
 import 'main_state.dart';
 
-
 class MainPage extends ConsumerWidget {
-
   const MainPage({super.key});
-  void bootstrap(UserManager um) {
+
+  void bootstrap(WidgetRef ref) {
     // init user.
     User? user = SharedPreference().getUser();
     if (user != null) {
-      um.restore(user);
+      ref.read(userProvider.notifier).restore(user);
     }
     // show app
   }
@@ -24,6 +23,7 @@ class MainPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     SA.init(context, width: 375, height: 844, allowSystemFontScale: true);
+    bootstrap(ref);
     return AnnotatedRegion(
         value: ref.watch(themeMode.notifier).systemUiOverlay(),
         child: Scaffold(
@@ -32,7 +32,7 @@ class MainPage extends ConsumerWidget {
             physics: const ClampingScrollPhysics(),
             controller: ref.read(mainProvider.notifier).pageController,
             children: ref.read(mainProvider.notifier).pageList,
-            onPageChanged: (index) => _onItemTaped(index,ref),
+            onPageChanged: (index) => _onItemTaped(index, ref),
           ),
           bottomNavigationBar: BottomNavigationBar(
             backgroundColor: Theme.of(context).custom.backgroundColor,
@@ -52,7 +52,7 @@ class MainPage extends ConsumerWidget {
             currentIndex: ref.watch(mainProvider).currentPageIndex,
             onTap: (index) => {
               ref.read(mainProvider.notifier).pageController.jumpToPage(index),
-              _onItemTaped(index,ref)
+              _onItemTaped(index, ref)
             },
           ),
         ));

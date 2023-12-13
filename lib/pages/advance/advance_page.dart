@@ -39,7 +39,7 @@ class QuizzesAdvancePage extends HookConsumerWidget {
               expandedHeight: 150.w,
               flexibleSpace: FlexibleSpaceBar(
                 background: Container(
-                  padding: EdgeInsets.fromLTRB(14.w, 0, 0, 14.w),
+                  padding: EdgeInsets.fromLTRB(14.w, 0, 0, 8.w),
                   alignment: Alignment.bottomCenter,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,

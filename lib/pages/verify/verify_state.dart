@@ -3,8 +3,7 @@ import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:go_router/go_router.dart';
-import 'package:quiz/modules/router/routers.dart';
+import 'package:quiz/modules/router/router_helper.dart';
 import 'package:quiz/modules/store/user/user_provider.dart';
 import 'package:quiz/utils/log/logger.dart';
 
@@ -61,7 +60,7 @@ class VerifyNotifier extends StateNotifier<VerifyState> {
   void onTapVerify(context) {
     // request http to verify
     // jump
-    GoRouter.of(context).go(Routes.mainTabQuizzes);
+    RouterHelper().homePage(context);
   }
 }
 

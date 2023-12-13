@@ -1,8 +1,5 @@
 part of 'routers.dart';
 
-final GlobalKey<NavigatorState> _shellNavigatorKey =
-    GlobalKey<NavigatorState>(debugLabel: 'shell_main');
-
 final routers = GoRouter(
   routes: <RouteBase>[
     GoRoute(
@@ -28,15 +25,16 @@ final routers = GoRouter(
     GoRoute(
         path: Routes.main,
         builder: (context, state) => const MainPage(),
+        redirect: quizRedirect,
         routes: [
           GoRoute(
             name: Routes.quizIntro,
             path: Routes.quizIntro,
-            pageBuilder: (context,GoRouterState state) {
-              int index = (state.extra ?? 0) as int;
+            pageBuilder: (context, GoRouterState state) {
+              RouterMeta meta = state.extra.asMeta();
               Logger.instance.debug(state);
               return CustomTransitionPage(
-                  child: IntroPage(index),
+                  child: IntroPage(meta.asInt(defaultValue: 0)),
                   transitionsBuilder:
                       (context, animation, secondaryAnimation, child) {
                     return FadeTransition(
@@ -71,3 +69,16 @@ final routers = GoRouter(
   debugLogDiagnostics: true,
   errorBuilder: (context, state) => const GlobalErrorPage(),
 );
+
+String? quizRedirect(BuildContext context, GoRouterState state) {
+  RouterMeta meta = state.extra.asMeta();
+  if (meta.auth) {
+    // check login state
+    ProviderContainer container = ProviderScope.containerOf(context);
+    bool loginState = container.read(userProvider).hasLogin();
+    if (!loginState) {
+      return Routes.login;
+    }
+  }
+  return null;
+}
