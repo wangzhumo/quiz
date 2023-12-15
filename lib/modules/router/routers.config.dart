@@ -52,11 +52,12 @@ final routers = GoRouter(
                 return const QuizzesAdvancePage();
               }),
           GoRoute(
-              path: Routes.quizSearch,
-              name: Routes.quizSearch,
-              builder: (context, GoRouterState state) {
-                return const QuizzesSearchPage();
-              })
+            path: Routes.quizSearch,
+            name: Routes.quizSearch,
+            pageBuilder: (context, state) =>
+                PageTransitions.routeSlideTransitionPage(
+                    const QuizzesSearchPage()),
+          ),
         ]),
     GoRoute(
         path: Routes.verfiyCode,

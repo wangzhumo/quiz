@@ -1,5 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:quiz/components/anim/page_transition.dart';
 import 'package:quiz/modules/router/router_meta.dart';
 import 'package:quiz/modules/store/user/user_provider.dart';
 import 'package:quiz/pages/advance/advance_page.dart';
